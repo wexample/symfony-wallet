@@ -3,7 +3,7 @@
   "description": "The credentials of a Symfony app kept as Doctrine entities, their types declared in its configuration, the php-wallet built from them",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "autoload": {
     "psr-4": {
       "Wexample\\SymfonyWallet\\": "src/"
@@ -23,7 +23,7 @@
   "require": {
     "php": ">=8.5",
     "doctrine/orm": "^3.0",
-    "wexample/php-wallet": ">=1.0.1",
+    "wexample/php-wallet": ">=2.0.0",
     "wexample/symfony-helpers": ">=19.2.0"
   },
   "require-dev": {
