@@ -4,6 +4,9 @@ services:
         autoconfigure: true
         public: false
 
+    Wexample\SymfonyWallet\Service\:
+        resource: '../../Service/'
+
     # Their configuration is set by the extension.
     Wexample\SymfonyWallet\Service\CredentialTypeRegistry:
         public: true

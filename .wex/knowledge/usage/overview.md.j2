@@ -59,3 +59,18 @@ $wallet->get((string) $credential->getId())->get('host');
 ```
 
 Each credential is named by its id and checked against its type when added: a row missing a required parameter fails the wallet.
+
+## What the app tells the bundle
+
+What names a credential is the app's to say: each `CredentialUsageCounterInterface` it implements is summed by `CredentialUsageService`, and a credential named somewhere is not removed.
+
+```php
+final readonly class StorageCredentialUsageCounter implements CredentialUsageCounterInterface
+{
+    public function countUsages(array $credentials): array { /* id => count */ }
+}
+```
+
+Who opens the connection is the app's too: `CredentialCheckService::ask()` marks the credential pending, saves it and dispatches `CredentialCheckAskedEvent`; the app's listener tests it — or sends it to a worker that does — and writes the outcome (`checkStatus`, `checkMessage`, `checkedAt`). `getOutcome()` reads it back.
+
+`CredentialPresenter` gives a credential in the api's shape of an entity, a secret's value never in it; the JS entity and repository are in `@wexample/symfony-wallet`.
