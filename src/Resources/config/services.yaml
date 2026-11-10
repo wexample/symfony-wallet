@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # Their configuration is set by the extension.
+    Wexample\SymfonyWallet\Service\CredentialTypeRegistry:
+        public: true
+        arguments:
+            $types: []
+
+    Wexample\SymfonyWallet\Service\WalletFactory:
+        public: true
+        arguments:
+            $credentialClass: ~
