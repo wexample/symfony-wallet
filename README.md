@@ -1,6 +1,6 @@
 # symfony-wallet
 
-Version: 2.0.0
+Version: 3.0.0
 
 The credentials of a Symfony app kept as Doctrine entities, their types declared in its configuration, the php-wallet built from them
 
