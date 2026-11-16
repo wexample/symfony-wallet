@@ -26,7 +26,7 @@ class WalletFactoryTest extends TestCase
 {
     public function testEveryCredentialWithItsParametersInOneQuery(): void
     {
-        $queries = new class extends AbstractLogger {
+        $queries = new class () extends AbstractLogger {
             public int $count = 0;
 
             public function log($level, string|Stringable $message, array $context = []): void
