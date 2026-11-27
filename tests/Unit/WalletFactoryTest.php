@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Log\AbstractLogger;
 use Stringable;
 use Symfony\Bridge\Doctrine\Types\UuidType;
+use Wexample\SymfonyWallet\Doctrine\SecretTextType;
 use Wexample\SymfonyWallet\Service\CredentialTypeRegistry;
 use Wexample\SymfonyWallet\Service\WalletFactory;
 use Wexample\SymfonyWallet\Tests\Unit\Fixtures\TestCredential;
@@ -39,6 +40,10 @@ class WalletFactoryTest extends TestCase
 
         if (! Type::hasType(UuidType::NAME)) {
             Type::addType(UuidType::NAME, UuidType::class);
+        }
+        // What the bundle registers for a parameter's value (WexampleSymfonyWalletExtension::prepend()).
+        if (! Type::hasType(SecretTextType::NAME)) {
+            Type::addType(SecretTextType::NAME, SecretTextType::class);
         }
 
         $config = ORMSetup::createAttributeMetadataConfig([__DIR__.'/Fixtures'], true);
