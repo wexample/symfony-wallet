@@ -54,6 +54,25 @@ abstract class AbstractCredential extends AbstractEntity
     /** A new parameter of the app's entity, not yet added. */
     abstract protected function createCredentialParameter(): AbstractCredentialParameter;
 
+    /**
+     * The platform's own — listed and set on the credentials' pages — rather
+     * than one an application keeps elsewhere, a project's say: all are,
+     * unless the application's subclass says otherwise.
+     */
+    public function isInternal(): bool
+    {
+        return true;
+    }
+
+    /**
+     * What an internal one meets, in DQL on the alias given
+     * (`isInternal`): none, all are.
+     */
+    public static function internalCondition(string $alias): ?string
+    {
+        return null;
+    }
+
     /** Saved and never shown again: whether it has a date of creation. */
     public function isNew(): bool
     {
